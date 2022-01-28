@@ -2,7 +2,7 @@
 
 ## 1. [环境搭建](cmd/day1/README.md)
 
-## 2. 服务拆分
+## 2. [服务拆分](cmd/day2/README.md)
 
 ## 3. 用户系统
 
