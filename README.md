@@ -4,7 +4,7 @@
 
 ## 2. [服务拆分](cmd/day2/README.md)
 
-## 3. 用户系统
+## 3. [用户系统](cmd/day3/README.md)
 
 ## 4. 产品服务
 
