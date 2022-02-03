@@ -6,7 +6,7 @@
 
 ## 3. [用户系统](cmd/day3/README.md)
 
-## 4. 产品服务
+## 4. [产品服务](cmd/day4/README.md)
 
 ## 5. 订单服务
 
