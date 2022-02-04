@@ -53,7 +53,7 @@ type (
 )
 
 @server(
-	jet: Auth
+	jwt: Auth
 )
 service Order {
 	@handler Create

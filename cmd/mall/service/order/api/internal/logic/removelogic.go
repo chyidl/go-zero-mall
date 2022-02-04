@@ -32,5 +32,6 @@ func (l *RemoveLogic) Remove(req types.RemoveRequest) (resp *types.RemoveRespons
 	if err != nil {
 		return nil, err
 	}
+
 	return &types.RemoveResponse{}, nil
 }

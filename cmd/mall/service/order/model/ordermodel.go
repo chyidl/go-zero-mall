@@ -82,7 +82,7 @@ func (m *defaultOrderModel) FindAllByUid(uid int64) ([]*Order, error) {
 	var resp []*Order
 
 	query := fmt.Sprintf("select %s from %s where `uid` = ?", orderRows, m.table)
-	err := m.QueryRowNoCache(&resp, query, uid)
+	err := m.QueryRowsNoCache(&resp, query, uid)
 
 	switch err {
 	case nil:

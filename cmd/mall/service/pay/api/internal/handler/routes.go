@@ -4,7 +4,7 @@ package handler
 import (
 	"net/http"
 
-	"github.com/chyidl/go-zero-mall/cmd/mall/service/order/api/internal/svc"
+	"github.com/chyidl/go-zero-mall/cmd/mall/service/pay/api/internal/svc"
 
 	"github.com/tal-tech/go-zero/rest"
 )
@@ -14,28 +14,18 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/api/order/create",
+				Path:    "/api/pay/create",
 				Handler: CreateHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/api/order/update",
-				Handler: UpdateHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/api/order/remove",
-				Handler: RemoveHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/api/order/detail",
+				Path:    "/api/pay/detail",
 				Handler: DetailHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/api/order/list",
-				Handler: ListHandler(serverCtx),
+				Path:    "/api/pay/callback",
+				Handler: CallbackHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
