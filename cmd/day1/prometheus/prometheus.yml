@@ -25,49 +25,56 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: ["192.168.50.73:9090"]
   
   # mall配置
   - job_name: 'mall'
     static_configs:
       # 目标的采集地址
-      - targets: ['golang:9080']
+      - targets: ['192.168.50.73:9080']
         labels:
           # 自定义标签
           app: 'user-api'
           env: 'test'
 
-      - targets: ['golang:9081']
+      # 目标的采集地址
+      - targets: ['192.168.50.73:9090']
+        labels:
+          # 自定义标签
+          app: 'user-rpc'
+          env: 'test'
+
+      - targets: ['192.168.50.73:9081']
         labels:
           # 自定义标签
           app: 'product-api'
           env: 'test'
 
-      - targets: ['golang:9091']
+      - targets: ['192.168.50.73:9091']
         labels:
           # 自定义标签
           app: 'product-rpc'
           env: 'test'
 
-      - targets: ['golang:9082']
+      - targets: ['192.168.50.73:9082']
         labels:
           # 自定义标签
           app: 'order-api'
           env: 'test'
 
-      - targets: ['golang:9092']
+      - targets: ['192.168.50.73:9092']
         labels:
           # 自定义标签
           app: 'order-rpc'
           env: 'test'
       
-      - targets: ['golang:9083']
+      - targets: ['192.168.50.73:9083']
         labels:
           # 自定义标签
           app: 'pay-api'
           env: 'test'
 
-      - targets: ['golang:9093']
+      - targets: ['192.168.50.73:9093']
         labels:
           # 自定义标签
           app: 'pay-rpc'

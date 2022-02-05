@@ -22,3 +22,8 @@ Redis:                # 制定 Redis 服务
   Host: 127.0.0.1:6379
   Type: node
   Pass:
+
+Prometheus:
+  Host: 0.0.0.0
+  Port: 9090
+  Path: /metrics
