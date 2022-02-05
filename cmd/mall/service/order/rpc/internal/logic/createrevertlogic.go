@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/chyidl/go-zero-mall/cmd/mall/service/order/model"
 	"github.com/chyidl/go-zero-mall/cmd/mall/service/order/rpc/internal/svc"
 	"github.com/chyidl/go-zero-mall/cmd/mall/service/order/rpc/order"
 	"github.com/chyidl/go-zero-mall/cmd/mall/service/user/rpc/user"
@@ -16,21 +15,21 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type CreateLogic struct {
+type CreateRevertLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateLogic {
-	return &CreateLogic{
+func NewCreateRevertLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateRevertLogic {
+	return &CreateRevertLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *CreateLogic) Create(in *order.CreateRequest) (*order.CreateResponse, error) {
+func (l *CreateRevertLogic) CreateRevert(in *order.CreateRequest) (*order.CreateResponse, error) {
 	// 获取 RawDB
 	db, err := sqlx.NewMysql(l.svcCtx.Config.Mysql.DataSource).RawDB()
 	if err != nil {
@@ -53,16 +52,17 @@ func (l *CreateLogic) Create(in *order.CreateRequest) (*order.CreateResponse, er
 			return fmt.Errorf("用户不存在")
 		}
 
-		newOrder := model.Order{
-			Uid:    in.Uid,
-			Pid:    in.Pid,
-			Amount: in.Amount,
-			Status: 0,
-		}
-		// 创建订单
-		_, err = l.svcCtx.OrderModel.TxInsert(tx, &newOrder)
+		// 查找用户最新创建的订单
+		resOrder, err := l.svcCtx.OrderModel.FindOneByUid(in.Uid)
 		if err != nil {
-			return fmt.Errorf("订单创建失败")
+			return fmt.Errorf("订单不存在")
+		}
+
+		// 修改订单状态9,标识订单已失效，并更新订单
+		resOrder.Status = 9
+		err = l.svcCtx.OrderModel.TxUpdate(tx, resOrder)
+		if err != nil {
+			return fmt.Errorf("订单更新失败")
 		}
 
 		return nil

@@ -18,4 +18,4 @@
 
 ## 9. [链路追踪](cmd/day9/README.md)
 
-## 10. 分布式事务
+## 10. [分布式事务](cmd/day10/README.md)
