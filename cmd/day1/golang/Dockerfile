@@ -14,8 +14,7 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.lis
     zip \
     unzip \
     git \
-    vim \
-    screen
+    vim 
 
 # 安装 goctl 代码生成工具
 USER root
