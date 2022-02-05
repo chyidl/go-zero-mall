@@ -18,3 +18,9 @@ Prometheus:
   Host: 0.0.0.0
   Port: 9091
   Path: /metrics
+
+Telemetry:
+  Name: product.rpc
+  Endpoint: http://192.168.50.73:5000/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
