@@ -54,17 +54,17 @@ go-zero-mall/cmd/mall on  master [!?]
     │   ├── model           # order 数据模型
     │   └── rpc             # order rpc 服务
     ├── pay
-    │   ├── api
-    │   ├── model
-    │   └── rpc
+    │   ├── api             # pay api 服务
+    │   ├── model           # pay 数据模型
+    │   └── rpc             # pay rpc 服务
     ├── product
-    │   ├── api
-    │   ├── model
-    │   └── rpc
+    │   ├── api             # product api 服务
+    │   ├── model           # product 数据模型
+    │   └── rpc             # product rpc 服务
     └── user
-        ├── api
-        ├── model
-        └── rpc
+        ├── api             # user api 服务
+        ├── model           # user 数据模型
+        └── rpc             # user rpc 服务
 
 18 directories, 0 files
 ```
